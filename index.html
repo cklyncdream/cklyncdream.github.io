@@ -1,40 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Çağan'ın Web Sayfası</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Soft</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <!-- Navbar -->
-  <div class="navbar">
-    <button onclick="goTo('home')">Anasayfa</button>
-    <button onclick="goTo('about')">Hakkımda</button>
-    <button onclick="goTo('projects')">Projeler</button>
-  </div>
 
-  <!-- Sayfa İçeriği -->
-  <div class="frame" id="home">
-    <h1>Merhaba, Ben Çağan!</h1>
-    <p>Bu benim kişisel web sayfam. Burada projelerimi, hakkımda bilgileri ve daha fazlasını bulabilirsin.</p>
-  </div>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Anasayfa</a></li>
+                <li><a href="#about">Hakkımızda</a></li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="frame hidden" id="about">
-    <h1>Hakkımda</h1>
-    <p>Ben bir yazılım geliştiricisiyim, web uygulamaları ve oyunlar geliştirmeyi seviyorum.</p>
-  </div>
+    <!-- Anasayfa Kısmı -->
+    <section id="home">
+        <div class="hero">
+            <h1>Dream Soft</h1>
+            <p>Yenilikçi Yazılım Çözümleri ile Geleceği Bugünden Yaşayın.</p>
+            <button onclick="location.href='#services'">Hizmetlerimizi Keşfedin</button>
+        </div>
+    </section>
 
-  <div class="frame hidden" id="projects">
-    <h1>Projelerim</h1>
-    <ul>
-      <li><a href="#">Proje 1</a></li>
-      <li><a href="#">Proje 2</a></li>
-      <li><a href="#">Proje 3</a></li>
-    </ul>
-  </div>
+    <!-- Hakkımızda Kısmı -->
+    <section id="about">
+        <h2>Hakkımızda</h2>
+        <p>Biz Dream Soft, teknoloji dünyasında yenilikçi yazılım çözümleri sunuyoruz. <span id="about-detail">[Burası senin
+            tarafından doldurulacak]</span></p>
+    </section>
 
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+    <!-- Hizmetler Kısmı -->
+    <section id="services">
+        <h2>Hizmetlerimiz</h2>
+        <div class="service-card">
+            <h3>Yazılım Geliştirme</h3>
+            <p>İhtiyacınıza göre özelleştirilmiş yazılım çözümleri.</p>
+        </div>
+        <div class="service-card">
+            <h3>Web Tasarımı</h3>
+            <p>Modern ve kullanıcı dostu web siteleri tasarımı.</p>
+        </div>
+        <div class="service-card">
+            <h3>Mobil Uygulama</h3>
+            <p>Android ve iOS platformları için uygulama geliştirme.</p>
+        </div>
+    </section>
+
+    <!-- İletişim Kısmı -->
+    <section id="contact">
+        <h2>İletişim</h2>
+        <form action="#">
+            <label for="name">Adınız</label>
+            <input type="text" id="name" placeholder="Adınızı girin" required>
+            <label for="email">E-posta</label>
+            <input type="email" id="email" placeholder="E-posta adresinizi girin" required>
+            <label for="message">Mesajınız</label>
+            <textarea id="message" placeholder="Mesajınızı buraya yazın" required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dream Soft. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
