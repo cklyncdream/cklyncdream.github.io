@@ -1,6 +1,8 @@
-function goTo(section) {
-  document.querySelectorAll('.frame').forEach(div => {
-    div.classList.add('hidden');
-  });
-  document.getElementById(section).classList.remove('hidden');
-}
+// Bu kısım, butonlara tıklama ile sayfa içeriğini yönlendirecek.
+document.querySelectorAll('nav ul li a').forEach((link) => {
+    link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const section = document.querySelector(link.getAttribute('href'));
+        window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+    });
+});
