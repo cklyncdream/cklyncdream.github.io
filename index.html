@@ -1,20 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-  <title>Çağan Paşam</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çağan'ın Web Sayfası</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Navbar -->
   <div class="navbar">
     <button onclick="goTo('home')">Anasayfa</button>
     <button onclick="goTo('about')">Hakkımda</button>
     <button onclick="goTo('projects')">Projeler</button>
   </div>
 
-  <div class="frame" id="home">Merhaba Çağan Paşam, burası senin krallığın 😎</div>
-  <div class="frame hidden" id="about">Ben Çağan Paşam. Web’i söküp takarım 🔧</div>
-  <div class="frame hidden" id="projects">Burada projelerin olacak 🚀</div>
+  <!-- Sayfa İçeriği -->
+  <div class="frame" id="home">
+    <h1>Merhaba, Ben Çağan!</h1>
+    <p>Bu benim kişisel web sayfam. Burada projelerimi, hakkımda bilgileri ve daha fazlasını bulabilirsin.</p>
+  </div>
 
+  <div class="frame hidden" id="about">
+    <h1>Hakkımda</h1>
+    <p>Ben bir yazılım geliştiricisiyim, web uygulamaları ve oyunlar geliştirmeyi seviyorum.</p>
+  </div>
+
+  <div class="frame hidden" id="projects">
+    <h1>Projelerim</h1>
+    <ul>
+      <li><a href="#">Proje 1</a></li>
+      <li><a href="#">Proje 2</a></li>
+      <li><a href="#">Proje 3</a></li>
+    </ul>
+  </div>
+
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
