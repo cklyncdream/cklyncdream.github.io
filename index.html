@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dream Soft</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
@@ -14,42 +15,49 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#about">Hakkımızda</a></li>
-                <li><a href="#contact">Bize Ulaşın</a></li>
-                <li><a href="#games">Oyunlarımız</a></li>
-                <li><a href="#goals">Hedeflerimiz</a></li>
-                <li><a href="#updates">Güncellemeler</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#bizeulasin">Bize Ulaşın</a></li>
+                <li><a href="#oyunlarimiz">Oyunlarımız</a></li>
+                <li><a href="#hedeflerimiz">Hedeflerimiz</a></li>
+                <li><a href="#guncellemeler">Güncellemeler</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="about">
+    <section id="hakkimizda">
         <h2>Hakkımızda</h2>
-        <p>Biz Dream Soft, teknoloji ve oyun dünyasında büyük adımlar atmayı hedefleyen bir ekibiz...</p>
+        <p>Dream Soft, oyun ve yazılım geliştiren bir şirket olarak size en iyi deneyimi sunmak için çalışmaktadır.</p>
     </section>
 
-    <section id="contact">
+    <section id="bizeulasin">
         <h2>Bize Ulaşın</h2>
-        <p>İletişim bilgilerimiz...</p>
+        <p>Bizimle iletişime geçmek için aşağıdaki formu doldurun.</p>
+        <form action="#">
+            <input type="text" placeholder="Adınız" required>
+            <input type="email" placeholder="E-posta adresiniz" required>
+            <textarea placeholder="Mesajınız" required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
     </section>
 
-    <section id="games">
+    <section id="oyunlarimiz">
         <h2>Oyunlarımız</h2>
-        <p>Oyunlarımız hakkında detaylar...</p>
+        <p>Geliştirdiğimiz oyunlar hakkında bilgi almak için aşağıdaki butona tıklayın.</p>
+        <button onclick="window.location.href = 'https://example.com/oyunlar';">Oyunlarımıza Göz At</button>
     </section>
 
-    <section id="goals">
+    <section id="hedeflerimiz">
         <h2>Hedeflerimiz</h2>
-        <p>Hedeflerimiz...</p>
+        <p>Hedeflerimiz, kullanıcılarımıza daha kaliteli oyun deneyimleri sunmaktır.</p>
     </section>
 
-    <section id="updates">
+    <section id="guncellemeler">
         <h2>Güncellemeler</h2>
-        <p>Son güncellemeler...</p>
+        <p>Son güncellemelerimiz hakkında detaylı bilgiye buradan ulaşabilirsiniz.</p>
     </section>
 
     <footer>
-        <p>&copy; 2025 Dream Soft | Tüm hakları saklıdır.</p>
+        <p>&copy; 2025 Dream Soft. Tüm hakları saklıdır.</p>
     </footer>
 </body>
 </html>
