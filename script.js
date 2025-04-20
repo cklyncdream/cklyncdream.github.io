@@ -19,7 +19,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
             input.style.borderColor = 'red';
             valid = false;
         } else {
-            input.style.borderColor = '#ccc';
+            input.style.borderColor = '#444';
         }
     });
 
