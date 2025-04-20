@@ -1,67 +1,152 @@
+/* Temel Ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  background: linear-gradient(135deg, #00f, #0ff, #0f0, #ff0, #f00);
-  background-size: 1000% 1000%;
-  animation: rainbow 20s ease infinite;
-  font-family: 'Arial', sans-serif;
-  color: white;
-  text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h1, h2, h3 {
+    color: #1f1f1f;
 }
 
-button {
-  margin: 0 15px;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease;
+/* Navbar */
+header {
+    background-color: #333;
+    padding: 10px 0;
 }
 
-button:hover {
-  background-color: white;
-  color: black;
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
 }
 
-.frame {
-  display: none;
-  padding: 20px;
-  margin-top: 100px;
-  font-size: 24px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+nav ul li {
+    margin: 0 15px;
 }
 
-.frame h1 {
-  font-size: 32px;
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.frame a {
-  color: #ff0;
-  text-decoration: none;
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
-.frame a:hover {
-  text-decoration: underline;
+/* Hero Bölümü */
+.hero {
+    background: linear-gradient(to right, #00bcd4, #8e24aa);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
 }
 
-.frame:not(.hidden) {
-  display: block;
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
 }
 
-@keyframes rainbow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color: #f50057;
+}
+
+/* Hakkımızda */
+#about {
+    padding: 40px;
+    background-color: #fff;
+}
+
+#about h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Hizmetler */
+#services {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.service-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 1.1em;
+}
+
+/* İletişim */
+#contact {
+    padding: 40px;
+    background-color: #fff;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#contact input, #contact textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contact button {
+    padding: 10px;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#contact button:hover {
+    background-color: #f50057;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
 }
