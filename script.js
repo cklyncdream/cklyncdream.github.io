@@ -1,8 +1,9 @@
-// Bu kısım, butonlara tıklama ile sayfa içeriğini yönlendirecek.
-document.querySelectorAll('nav ul li a').forEach((link) => {
-    link.addEventListener('click', function (event) {
-        event.preventDefault();
-        const section = document.querySelector(link.getAttribute('href'));
-        window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });
