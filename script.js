@@ -1,9 +1,11 @@
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+// Dinamik içerik için örnek fonksiyon
+function showAlert() {
+    alert("Bize Ulaşın!");
+}
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+// Menüye tıklandığında animasyon veya farklı bir özellik ekleyebilirsin
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        console.log("Tıklandı: " + link.textContent);
     });
 });
