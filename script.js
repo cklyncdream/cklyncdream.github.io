@@ -1,4 +1,7 @@
 const terminal = document.getElementById("terminal");
+const chatbox = document.getElementById("chatbox");
+const chatInput = document.getElementById("chatInput");
+const sendBtn = document.getElementById("sendBtn");
 
 const commands = [
   "import os",
@@ -33,16 +36,6 @@ async function typeLine(line, delay = 30) {
 }
 
 async function startTerminal() {
-  await typeLine("Sisteme bağlanılıyor...");
-  await typeLine("Dosyalar yükleniyor...");
-  await typeLine("Güvenlik protokolleri atlanıyor...\n");
-
-  for (let cmd of commands) {
-    await typeLine(cmd, 10);
-  }
-
-  await typeLine("\nİşlem Başarılı");
-
   await sleep(1000);
   await fadeOutScreen();
 }
@@ -89,11 +82,31 @@ function showDreamSoft() {
       setTimeout(() => {
         let typeSub = setInterval(() => {
           subtext.innerText += sub[j++];
-          if (j === sub.length) clearInterval(typeSub);
+          if (j === sub.length) {
+            clearInterval(typeSub);
+            fadeInChatbox(); // Chatbox'ı göster
+          }
         }, 100);
       }, 500);
     }
   }, 100);
 }
+
+function fadeInChatbox() {
+  chatbox.style.display = "block"; // Chatbox'ı görünür yap
+  chatbox.style.transition = "opacity 1s ease-in";
+  chatbox.style.opacity = 1;
+}
+
+sendBtn.addEventListener("click", () => {
+  const message = chatInput.value;
+  if (message) {
+    const userMessage = document.createElement("div");
+    userMessage.textContent = `> ${message}`;
+    terminal.appendChild(userMessage);
+    chatInput.value = ""; // Inputu temizle
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+});
 
 window.onload = startTerminal;
