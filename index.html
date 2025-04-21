@@ -1,69 +1,40 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dream Soft</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Soft</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with sticky navigation -->
-    <header>
-        <div class="logo">
-            <h1>Dream Soft</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#hakkimizda">Hakkımızda</a></li>
-                <li><a href="#bizeulasin">Bize Ulaşın</a></li>
-                <li><a href="#oyunlarimiz">Oyunlarımız</a></li>
-                <li><a href="#hedeflerimiz">Hedeflerimiz</a></li>
-                <li><a href="#guncellemeler">Güncellemeler</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div id="terminal">
+    <div id="terminal-content"></div>
+  </div>
 
-    <!-- Main content sections -->
-    <main>
-        <section id="hakkimizda" class="section">
-            <h2>Hakkımızda</h2>
-            <p>Dream Soft, sektördeki en inovatif oyun ve yazılım geliştirme şirketlerinden biridir. Müşterilerimize kaliteli ve sürdürülebilir çözümler sunuyoruz.</p>
-        </section>
+  <div id="logo-screen" class="hidden">
+    <h1>Dream Soft</h1>
+    <p>By. Severus Salvadore Rexuexuel&lt;/&gt;</p>
+  </div>
 
-        <section id="bizeulasin" class="section">
-            <h2>Bize Ulaşın</h2>
-            <p>Bizimle iletişime geçmek için aşağıdaki formu doldurun. Her zaman size yardımcı olmak için buradayız.</p>
-            <form action="#">
-                <input type="text" placeholder="Adınız" required>
-                <input type="email" placeholder="E-posta adresiniz" required>
-                <textarea placeholder="Mesajınız" required></textarea>
-                <button type="submit">Gönder</button>
-            </form>
-        </section>
+  <div id="password-screen" class="hidden">
+    <input type="password" id="password-input" placeholder="Şifreyi giriniz">
+    <button onclick="checkPassword()">Giriş Yap</button>
+    <p id="password-error"></p>
+  </div>
 
-        <section id="oyunlarimiz" class="section">
-            <h2>Oyunlarımız</h2>
-            <p>Geliştirdiğimiz oyunları incelemek için aşağıdaki butona tıklayın.</p>
-            <button onclick="window.location.href = 'https://example.com/oyunlar';">Oyunlarımıza Göz At</button>
-        </section>
+  <div id="captcha-screen" class="hidden">
+    <p>Ben robot değilim</p>
+    <button onclick="solveCaptcha()">✅</button>
+  </div>
 
-        <section id="hedeflerimiz" class="section">
-            <h2>Hedeflerimiz</h2>
-            <p>Hedeflerimiz, kullanıcılarımıza her zaman en iyi deneyimi sunmaktır. Gelişen teknolojiyle birlikte en yenilikçi projeleri hayata geçirmeyi amaçlıyoruz.</p>
-        </section>
+  <div id="main-site" class="hidden">
+    <h2>🎉 Hoş Geldin Dream Soft!</h2>
+    <div id="chat-box">
+      <div id="messages"></div>
+      <input type="text" id="chat-input" placeholder="Mesaj yaz..." onkeypress="handleEnter(event)">
+    </div>
+  </div>
 
-        <section id="guncellemeler" class="section">
-            <h2>Güncellemeler</h2>
-            <p>Son güncellemelerimiz hakkında daha fazla bilgi almak için aşağıdaki bağlantıya göz atabilirsiniz.</p>
-            <button onclick="window.location.href = 'https://example.com/guncellemeler';">Güncellemeler</button>
-        </section>
-    </main>
-
-    <!-- Footer section -->
-    <footer>
-        <p>&copy; 2025 Dream Soft. Tüm hakları saklıdır.</p>
-    </footer>
+  <script src="script.js"></script>
 </body>
 </html>
