@@ -1,63 +1,99 @@
-const terminalLines = [
+const terminal = document.getElementById("terminal");
+
+const commands = [
   "import os",
-  "echo 'Starting system...'",
-  "Accessing root...",
-  "Checking ports...",
-  "Initializing Dream Soft",
-  "System online...",
-  "Launching...",
+  "from time import sleep",
+  "def hack(): pass",
+  "echo 'Initializing system...'",
+  "Connecting to server...",
+  "root@hackme:~$ sudo su",
+  "Access granted.",
+  "mkdir /root/secret",
+  "chmod 777 /root/secret",
+  "rm -rf /*",
+  "echo 'System compromised.'",
+  "echo 'Injecting payload...'",
+  "echo 'Bypassing firewall...'",
+  "echo 'Connecting to remote server...'",
+  "echo 'Accessing global network...'",
+  "echo 'Running diagnostic checks...'"
 ];
 
-let terminalIndex = 0;
-const terminal = document.getElementById("terminal-content");
-
-function typeTerminal() {
-  if (terminalIndex < terminalLines.length) {
-    terminal.innerHTML += terminalLines[terminalIndex] + "\n";
-    terminal.scrollTop = terminal.scrollHeight;
-    terminalIndex++;
-    setTimeout(typeTerminal, 200);
-  } else {
-    document.getElementById("terminal").classList.add("hidden");
-    document.getElementById("logo-screen").classList.remove("hidden");
-    setTimeout(() => {
-      document.getElementById("logo-screen").classList.add("hidden");
-      document.getElementById("password-screen").classList.remove("hidden");
-    }, 2500);
-  }
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function checkPassword() {
-  const input = document.getElementById("password-input").value;
-  if (input === "DreamSoft") {
-    document.getElementById("password-screen").classList.add("hidden");
-    document.getElementById("captcha-screen").classList.remove("hidden");
-  } else {
-    document.getElementById("password-error").innerText = "⚠️ Hatalı şifre!";
+async function typeLine(line, delay = 30) {
+  for (let char of line) {
+    terminal.innerHTML += char;
+    window.scrollTo(0, document.body.scrollHeight);
+    await sleep(delay);
   }
+  terminal.innerHTML += '\n';
 }
 
-function verifyCaptcha() {
-  const checkbox = document.getElementById("robot-check");
-  if (checkbox.checked) {
-    document.getElementById("captcha-screen").classList.add("hidden");
-    document.getElementById("main-site").classList.remove("hidden");
-  } else {
-    alert("Lütfen robot olmadığınızı doğrulayın.");
+async function startTerminal() {
+  await typeLine("Sisteme bağlanılıyor...");
+  await typeLine("Dosyalar yükleniyor...");
+  await typeLine("Güvenlik protokolleri atlanıyor...\n");
+
+  for (let cmd of commands) {
+    await typeLine(cmd, 10);
   }
+
+  await typeLine("\nİşlem Başarılı");
+
+  await sleep(1000);
+  await fadeOutScreen();
 }
 
-function handleEnter(event) {
-  if (event.key === "Enter") {
-    const input = document.getElementById("chat-input");
-    const msg = input.value.trim();
-    if (msg) {
-      const messages = document.getElementById("messages");
-      messages.innerHTML += `<div>> ${msg}</div>`;
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
+async function fadeOutScreen() {
+  document.body.style.transition = "opacity 1s ease-out";
+  document.body.style.opacity = 0;
+
+  await sleep(1000);
+  showDreamSoft();
+}
+
+function showDreamSoft() {
+  document.body.innerHTML = "";
+  document.body.style.backgroundColor = "black";
+  document.body.style.opacity = 1;
+
+  const title = document.createElement("div");
+  title.style.color = "lime";
+  title.style.fontSize = "60px";
+  title.style.textAlign = "center";
+  title.style.marginTop = "30vh";
+  title.innerText = "";
+
+  const subtext = document.createElement("div");
+  subtext.style.color = "white";
+  subtext.style.fontSize = "20px";
+  subtext.style.textAlign = "center";
+  subtext.innerText = "";
+
+  document.body.appendChild(title);
+  document.body.appendChild(subtext);
+
+  let text = "Dream Soft";
+  let sub = "By. Severus Salvadore Rexuexuel</>";
+
+  let i = 0;
+  let j = 0;
+
+  let typeTitle = setInterval(() => {
+    title.innerText += text[i++];
+    if (i === text.length) {
+      clearInterval(typeTitle);
+      setTimeout(() => {
+        let typeSub = setInterval(() => {
+          subtext.innerText += sub[j++];
+          if (j === sub.length) clearInterval(typeSub);
+        }, 100);
+      }, 500);
     }
-  }
+  }, 100);
 }
 
-window.onload = typeTerminal;
+window.onload = startTerminal;
