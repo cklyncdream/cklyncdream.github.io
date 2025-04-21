@@ -1,65 +1,63 @@
 const terminalLines = [
   "import os",
-  "def hack(): pass",
-  "echo 'Initializing system...'",
-  "Connecting to server...",
-  "root@hackme:~$ sudo su",
-  "Access granted.",
-  "mkdir /root/secret",
-  "echo 'Injecting payload...'",
-  "System compromised.",
-  "Running diagnostic checks..."
+  "echo 'Starting system...'",
+  "Accessing root...",
+  "Checking ports...",
+  "Initializing Dream Soft",
+  "System online...",
+  "Launching...",
 ];
 
-const terminalDiv = document.getElementById("terminal-content");
-const logoScreen = document.getElementById("logo-screen");
-const passwordScreen = document.getElementById("password-screen");
-const captchaScreen = document.getElementById("captcha-screen");
-const mainSite = document.getElementById("main-site");
+let terminalIndex = 0;
+const terminal = document.getElementById("terminal-content");
 
-let line = 0;
-
-function showNextLine() {
-  if (line < terminalLines.length) {
-    terminalDiv.innerHTML += terminalLines[line] + "\n";
-    terminalDiv.scrollTop = terminalDiv.scrollHeight;
-    line++;
-    setTimeout(showNextLine, 100);
+function typeTerminal() {
+  if (terminalIndex < terminalLines.length) {
+    terminal.innerHTML += terminalLines[terminalIndex] + "\n";
+    terminal.scrollTop = terminal.scrollHeight;
+    terminalIndex++;
+    setTimeout(typeTerminal, 200);
   } else {
+    document.getElementById("terminal").classList.add("hidden");
+    document.getElementById("logo-screen").classList.remove("hidden");
     setTimeout(() => {
-      document.getElementById("terminal").classList.add("hidden");
-      logoScreen.classList.remove("hidden");
-      setTimeout(() => {
-        logoScreen.classList.add("hidden");
-        passwordScreen.classList.remove("hidden");
-      }, 3000);
-    }, 1000);
+      document.getElementById("logo-screen").classList.add("hidden");
+      document.getElementById("password-screen").classList.remove("hidden");
+    }, 2500);
   }
 }
 
 function checkPassword() {
   const input = document.getElementById("password-input").value;
   if (input === "DreamSoft") {
-    passwordScreen.classList.add("hidden");
-    captchaScreen.classList.remove("hidden");
+    document.getElementById("password-screen").classList.add("hidden");
+    document.getElementById("captcha-screen").classList.remove("hidden");
   } else {
-    document.getElementById("password-error").innerText = "Hatalı şifre!";
+    document.getElementById("password-error").innerText = "⚠️ Hatalı şifre!";
   }
 }
 
-function solveCaptcha() {
-  captchaScreen.classList.add("hidden");
-  mainSite.classList.remove("hidden");
+function verifyCaptcha() {
+  const checkbox = document.getElementById("robot-check");
+  if (checkbox.checked) {
+    document.getElementById("captcha-screen").classList.add("hidden");
+    document.getElementById("main-site").classList.remove("hidden");
+  } else {
+    alert("Lütfen robot olmadığınızı doğrulayın.");
+  }
 }
 
-function handleEnter(e) {
-  if (e.key === "Enter") {
+function handleEnter(event) {
+  if (event.key === "Enter") {
     const input = document.getElementById("chat-input");
-    const msgBox = document.getElementById("messages");
-    msgBox.innerHTML += `<div>> ${input.value}</div>`;
-    input.value = "";
-    msgBox.scrollTop = msgBox.scrollHeight;
+    const msg = input.value.trim();
+    if (msg) {
+      const messages = document.getElementById("messages");
+      messages.innerHTML += `<div>> ${msg}</div>`;
+      input.value = "";
+      messages.scrollTop = messages.scrollHeight;
+    }
   }
 }
 
-window.onload = showNextLine;
+window.onload = typeTerminal;
