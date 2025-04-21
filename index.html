@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dream Soft</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Terminal ekranı -->
   <div id="terminal">
-    <div id="terminal-content"></div>
+    <pre id="terminal-content"></pre>
   </div>
 
+  <!-- Logo ekranı -->
   <div id="logo-screen" class="hidden">
     <h1>Dream Soft</h1>
     <p>By. Severus Salvadore Rexuexuel&lt;/&gt;</p>
   </div>
 
+  <!-- Şifre ekranı -->
   <div id="password-screen" class="hidden">
-    <input type="password" id="password-input" placeholder="Şifreyi giriniz">
-    <button onclick="checkPassword()">Giriş Yap</button>
+    <h2>Giriş için şifre giriniz</h2>
+    <input type="password" id="password-input" placeholder="Şifre"/>
+    <button onclick="checkPassword()">Giriş</button>
     <p id="password-error"></p>
   </div>
 
+  <!-- Bot doğrulama ekranı -->
   <div id="captcha-screen" class="hidden">
-    <p>Ben robot değilim</p>
-    <button onclick="solveCaptcha()">✅</button>
+    <h2>Ben robot değilim</h2>
+    <div class="captcha-box">
+      <input type="checkbox" id="robot-check" />
+      <label for="robot-check">Ben robot değilim</label>
+    </div>
+    <button onclick="verifyCaptcha()">Doğrula</button>
   </div>
 
+  <!-- Ana ekran -->
   <div id="main-site" class="hidden">
-    <h2>🎉 Hoş Geldin Dream Soft!</h2>
+    <h2>✔️ Giriş Başarılı</h2>
     <div id="chat-box">
       <div id="messages"></div>
-      <input type="text" id="chat-input" placeholder="Mesaj yaz..." onkeypress="handleEnter(event)">
+      <input type="text" id="chat-input" placeholder="Bir mesaj yaz..." onkeypress="handleEnter(event)">
     </div>
   </div>
 
