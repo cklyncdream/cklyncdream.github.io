@@ -1,41 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Grand Chaos City</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <!-- 3 Nokta Butonu -->
-    <div class="menu-button" onclick="toggleSidebar()">&#8942;</div>
+// script.js
 
-    <!-- Sol Sidebar -->
-    <div class="sidebar" id="sidebar">
-      <ul>
-        <li onclick="showPage('development')">Development Team</li>
-        <li onclick="showPage('info')">Game Information</li>
-        <li onclick="showPage('announcement')">Game Announcement</li>
-      </ul>
-    </div>
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar.style.left === '0px') {
+    sidebar.style.left = '-250px';
+  } else {
+    sidebar.style.left = '0px';
+  }
+}
 
-    <!-- İçerik Alanı -->
-    <div class="content" id="content">
-      <h1>Grand Chaos City</h1>
-      <p class="description">
-        Grand Chaos City, özgürlüğün ve kaosun birleştiği yeni nesil açık dünya deneyimidir. 
-        GTA 5'in ötesinde, sınırsız detay ve gerçekçilikle donatılmış benzersiz bir şehir hayatı sizi bekliyor.
-      </p>
+function showPage(page) {
+  const content = document.getElementById('content');
 
-      <div class="gfx-gallery">
-        <div class="gfx-item">GFX 1</div>
-        <div class="gfx-item">GFX 2</div>
-        <div class="gfx-item">GFX 3</div>
-      </div>
-    </div>
-  </div>
-
-<script src="script.js"></script>
-</body>
-</html>
+  if (page === 'development') {
+    content.innerHTML = `
+      <h1>Development Team</h1>
+      <p class="description">Grand Chaos City ekibi, alanında uzman geliştiriciler ve sanatçılardan oluşuyor.</p>
+    `;
+  } else if (page === 'info') {
+    content.innerHTML = `
+      <h1>Game Information</h1>
+      <p class="description">Grand Chaos City, benzersiz bir şehir hayatı deneyimi sunuyor. Açık dünya, gerçekçi fizik motoru ve sınırsız etkileşim!</p>
+    `;
+  } else if (page === 'announcement') {
+    content.innerHTML = `
+      <h1>Game Announcements</h1>
+      <p class="description">Tüm duyurular ve güncellemeler burada paylaşılacak. Takipte kalın!</p>
+    `;
+  }
+}
