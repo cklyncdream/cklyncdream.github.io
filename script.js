@@ -1,99 +1,41 @@
-const terminal = document.getElementById("terminal");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grand Chaos City</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 3 Nokta Butonu -->
+    <div class="menu-button" onclick="toggleSidebar()">&#8942;</div>
 
-const commands = [
-  "import os",
-  "from time import sleep",
-  "def hack(): pass",
-  "echo 'Initializing system...'",
-  "Connecting to server...",
-  "root@hackme:~$ sudo su",
-  "Access granted.",
-  "mkdir /root/secret",
-  "chmod 777 /root/secret",
-  "rm -rf /*",
-  "echo 'System compromised.'",
-  "echo 'Injecting payload...'",
-  "echo 'Bypassing firewall...'",
-  "echo 'Connecting to remote server...'",
-  "echo 'Accessing global network...'",
-  "echo 'Running diagnostic checks...'"
-];
+    <!-- Sol Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <ul>
+        <li onclick="showPage('development')">Development Team</li>
+        <li onclick="showPage('info')">Game Information</li>
+        <li onclick="showPage('announcement')">Game Announcement</li>
+      </ul>
+    </div>
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+    <!-- İçerik Alanı -->
+    <div class="content" id="content">
+      <h1>Grand Chaos City</h1>
+      <p class="description">
+        Grand Chaos City, özgürlüğün ve kaosun birleştiği yeni nesil açık dünya deneyimidir. 
+        GTA 5'in ötesinde, sınırsız detay ve gerçekçilikle donatılmış benzersiz bir şehir hayatı sizi bekliyor.
+      </p>
 
-async function typeLine(line, delay = 30) {
-  for (let char of line) {
-    terminal.innerHTML += char;
-    window.scrollTo(0, document.body.scrollHeight);
-    await sleep(delay);
-  }
-  terminal.innerHTML += '\n';
-}
+      <div class="gfx-gallery">
+        <div class="gfx-item">GFX 1</div>
+        <div class="gfx-item">GFX 2</div>
+        <div class="gfx-item">GFX 3</div>
+      </div>
+    </div>
+  </div>
 
-async function startTerminal() {
-  await typeLine("Sisteme bağlanılıyor...");
-  await typeLine("Dosyalar yükleniyor...");
-  await typeLine("Güvenlik protokolleri atlanıyor...\n");
-
-  for (let cmd of commands) {
-    await typeLine(cmd, 10);
-  }
-
-  await typeLine("\nİşlem Başarılı");
-
-  await sleep(1000);
-  await fadeOutScreen();
-}
-
-async function fadeOutScreen() {
-  document.body.style.transition = "opacity 1s ease-out";
-  document.body.style.opacity = 0;
-
-  await sleep(1000);
-  showDreamSoft();
-}
-
-function showDreamSoft() {
-  document.body.innerHTML = "";
-  document.body.style.backgroundColor = "black";
-  document.body.style.opacity = 1;
-
-  const title = document.createElement("div");
-  title.style.color = "lime";
-  title.style.fontSize = "60px";
-  title.style.textAlign = "center";
-  title.style.marginTop = "30vh";
-  title.innerText = "";
-
-  const subtext = document.createElement("div");
-  subtext.style.color = "white";
-  subtext.style.fontSize = "20px";
-  subtext.style.textAlign = "center";
-  subtext.innerText = "";
-
-  document.body.appendChild(title);
-  document.body.appendChild(subtext);
-
-  let text = "Dream Soft";
-  let sub = "By. Severus Salvadore Rexuexuel</>";
-
-  let i = 0;
-  let j = 0;
-
-  let typeTitle = setInterval(() => {
-    title.innerText += text[i++];
-    if (i === text.length) {
-      clearInterval(typeTitle);
-      setTimeout(() => {
-        let typeSub = setInterval(() => {
-          subtext.innerText += sub[j++];
-          if (j === sub.length) clearInterval(typeSub);
-        }, 100);
-      }, 500);
-    }
-  }, 100);
-}
-
-window.onload = startTerminal;
+<script src="script.js"></script>
+</body>
+</html>
