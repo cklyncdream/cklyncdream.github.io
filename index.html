@@ -23,9 +23,13 @@
 
         <section class="announcements">
             <h2>Duyurular</h2>
-            <div class="announcement-item">
-                <p><strong>Önemli Duyuru:</strong> Bu platforma katıldığınız için teşekkür ederiz! Sohbet etmeye başlayabilirsiniz.</p>
+            <div id="announcement-list">
+                <div class="announcement-item">
+                    <p><strong>Önemli Duyuru:</strong> Bu platforma katıldığınız için teşekkür ederiz! Sohbet etmeye başlayabilirsiniz.</p>
+                </div>
             </div>
+            <textarea id="new-announcement" placeholder="Duyuru yazın..."></textarea>
+            <button onclick="addAnnouncement()">Duyuru Gönder</button>
         </section>
 
         <section class="chat-servers">
