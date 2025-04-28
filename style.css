@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #1e1e1e;
+    background-color: #121212;
     color: white;
     display: flex;
     justify-content: center;
@@ -17,10 +17,16 @@ body {
 
 .container {
     text-align: center;
+    width: 100%;
+    max-width: 800px;
 }
 
 .camera-box {
     margin-bottom: 20px;
+    border: 2px solid #45a049;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1e1e1e;
 }
 
 video {
@@ -36,8 +42,8 @@ video {
     background-color: #45a049;
     color: white;
     border: none;
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 12px 25px;
+    margin: 10px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
@@ -48,20 +54,38 @@ video {
     background-color: #3e8e41;
 }
 
+#startCamera, #stopCamera {
+    background-color: #009688;
+}
+
+#startCamera:hover, #stopCamera:hover {
+    background-color: #00796b;
+}
+
+#startVideo, #stopVideo {
+    background-color: #f44336;
+}
+
+#startVideo:hover, #stopVideo:hover {
+    background-color: #d32f2f;
+}
+
 .gallery {
-    margin-top: 20px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px;
 }
 
 #imageGallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
 }
 
-#imageGallery img {
+#imageGallery img, #imageGallery video {
     width: 150px;
     height: 150px;
-    margin: 10px;
     border-radius: 10px;
     border: 2px solid #45a049;
 }
