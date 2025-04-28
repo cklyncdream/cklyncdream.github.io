@@ -6,118 +6,62 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #2b2d42;
-    color: #fff;
-}
-
-header {
-    background-color: #1f2029;
+    background-color: #1e1e1e;
     color: white;
-    padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
+    flex-direction: column;
 }
 
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-header nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 18px;
-}
-
-header nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 20px;
-    background-color: #222436;
-    border-radius: 10px;
-}
-
-.welcome-section {
+.container {
     text-align: center;
-    margin-bottom: 40px;
 }
 
-.welcome-section h1 {
-    font-size: 36px;
+.camera-box {
     margin-bottom: 20px;
 }
 
-.announcements {
-    margin-bottom: 40px;
+video {
+    border-radius: 10px;
+    border: 2px solid #45a049;
 }
 
-.announcement-item {
-    background-color: #4e5d6a;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.announcement-item p {
-    color: #fff;
-}
-
-#new-announcement {
-    width: 100%;
-    padding: 10px;
-    background-color: #3d4752;
-    border: 1px solid #fff;
-    border-radius: 8px;
-    margin-top: 20px;
-    color: #fff;
-}
-
-#new-announcement::placeholder {
-    color: #aaa;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+.controls {
     margin-top: 10px;
 }
 
-button:hover {
+.btn {
     background-color: #45a049;
-}
-
-.chat-servers .server-item {
-    background-color: #3e4a59;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.chat-servers .server-item a {
-    text-decoration: none;
-    color: #66bb6a;
-    font-size: 18px;
-}
-
-.chat-servers .server-item a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    background-color: #1f2029;
     color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3e8e41;
+}
+
+.gallery {
+    margin-top: 20px;
+}
+
+#imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#imageGallery img {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 2px solid #45a049;
 }
