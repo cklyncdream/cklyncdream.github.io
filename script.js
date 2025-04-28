@@ -5,6 +5,7 @@ let stopVideoButton = document.getElementById("stopVideo");
 let startCameraButton = document.getElementById("startCamera");
 let stopCameraButton = document.getElementById("stopCamera");
 let imageGallery = document.getElementById("imageGallery");
+let videoGallery = document.getElementById("videoGallery");
 
 let mediaRecorder;
 let recordedChunks = [];
@@ -65,7 +66,7 @@ startVideoButton.addEventListener("click", () => {
         videoElement.src = videoURL;
         videoElement.controls = true;
         videoElement.width = 320;
-        imageGallery.appendChild(videoElement);
+        videoGallery.appendChild(videoElement);
     };
 
     mediaRecorder.start();
@@ -78,6 +79,21 @@ stopVideoButton.addEventListener("click", () => {
     mediaRecorder.stop();
     startVideoButton.disabled = false;
     stopVideoButton.disabled = true;
+});
+
+// Tab sekmeleri için geçiş işlevselliği
+document.getElementById("photosTab").addEventListener("click", () => {
+    document.getElementById("imageGallery").classList.add("active");
+    document.getElementById("videoGallery").classList.remove("active");
+    document.getElementById("photosTab").classList.add("active");
+    document.getElementById("videosTab").classList.remove("active");
+});
+
+document.getElementById("videosTab").addEventListener("click", () => {
+    document.getElementById("videoGallery").classList.add("active");
+    document.getElementById("imageGallery").classList.remove("active");
+    document.getElementById("videosTab").classList.add("active");
+    document.getElementById("photosTab").classList.remove("active");
 });
 
 // Başlangıçta kamerayı başlat
