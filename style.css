@@ -1,3 +1,4 @@
+/* Temel Stil Ayarları */
 * {
     margin: 0;
     padding: 0;
@@ -13,16 +14,17 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    margin: 0;
 }
 
 .container {
     text-align: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .camera-box {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border: 2px solid #45a049;
     padding: 10px;
     border-radius: 10px;
@@ -70,20 +72,54 @@ video {
     background-color: #d32f2f;
 }
 
+/* Galeri Bölümü */
 .gallery {
     margin-top: 30px;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
 }
 
-#imageGallery {
+.tabs {
+    margin-bottom: 15px;
+}
+
+.tab-button {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #444;
+}
+
+.tab-button.active {
+    background-color: #45a049;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#imageGallery, #videoGallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
+    justify-content: center;
 }
 
-#imageGallery img, #imageGallery video {
+#imageGallery img, #videoGallery video {
     width: 150px;
     height: 150px;
     border-radius: 10px;
