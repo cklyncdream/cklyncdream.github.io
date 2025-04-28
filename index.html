@@ -3,50 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyChatHub</title>
+    <title>Kamera Uygulaması</title>
     <link rel="stylesheet" href="stil.css">
 </head>
 <body>
-    <header>
-        <div class="logo">MyChatHub</div>
-        <nav>
-            <a href="login.html">Giriş Yap</a>
-            <a href="signup.html">Kayıt Ol</a>
-        </nav>
-    </header>
-
-    <main>
-        <div class="welcome-section">
-            <h1>Hoşgeldiniz, MyChatHub!</h1>
-            <p>Hızlıca sohbet etmeye başla, duyurular yap, sunucular kur!</p>
+    <div class="container">
+        <div class="camera-box">
+            <video id="video" width="320" height="240" autoplay></video>
+            <div class="controls">
+                <button id="captureButton" class="btn">📸 Fotoğraf Çek</button>
+                <button id="startVideo" class="btn">🎥 Video Başlat</button>
+                <button id="stopVideo" class="btn">⏹️ Video Durdur</button>
+            </div>
         </div>
-
-        <section class="announcements">
-            <h2>Duyurular</h2>
-            <div id="announcement-list">
-                <div class="announcement-item">
-                    <p><strong>Önemli Duyuru:</strong> Bu platforma katıldığınız için teşekkür ederiz! Sohbet etmeye başlayabilirsiniz.</p>
-                </div>
-            </div>
-            <textarea id="new-announcement" placeholder="Duyuru yazın..."></textarea>
-            <button onclick="addAnnouncement()">Duyuru Gönder</button>
-        </section>
-
-        <section class="chat-servers">
-            <h2>Sunucular</h2>
-            <div class="server-item">
-                <a href="#">Genel Sohbet</a>
-            </div>
-            <div class="server-item">
-                <a href="#">Oyun Sohbeti</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 MyChatHub - Tüm hakları saklıdır.</p>
-    </footer>
-
+        <div id="gallery" class="gallery">
+            <h3>Galeriden Fotoğraf</h3>
+            <div id="imageGallery"></div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
