@@ -2,6 +2,8 @@ let videoElement = document.getElementById("video");
 let captureButton = document.getElementById("captureButton");
 let startVideoButton = document.getElementById("startVideo");
 let stopVideoButton = document.getElementById("stopVideo");
+let startCameraButton = document.getElementById("startCamera");
+let stopCameraButton = document.getElementById("stopCamera");
 let imageGallery = document.getElementById("imageGallery");
 
 let mediaRecorder;
@@ -16,6 +18,19 @@ async function startCamera() {
     });
 
     videoElement.srcObject = stream;
+    startCameraButton.disabled = true;
+    stopCameraButton.disabled = false;
+}
+
+// Kamera kapama fonksiyonu
+function stopCamera() {
+    if (stream) {
+        let tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+    }
+    videoElement.srcObject = null;
+    startCameraButton.disabled = false;
+    stopCameraButton.disabled = true;
 }
 
 // Fotoğraf çekme fonksiyonu
@@ -25,7 +40,7 @@ captureButton.addEventListener("click", () => {
     canvas.height = 240;
     let context = canvas.getContext("2d");
     context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-    
+
     let imgData = canvas.toDataURL("image/png");
     let imgElement = document.createElement("img");
     imgElement.src = imgData;
@@ -39,7 +54,7 @@ startVideoButton.addEventListener("click", () => {
     mediaRecorder.ondataavailable = event => {
         recordedChunks.push(event.data);
     };
-    
+
     mediaRecorder.onstop = () => {
         let blob = new Blob(recordedChunks, {
             type: "video/webm"
@@ -66,4 +81,5 @@ stopVideoButton.addEventListener("click", () => {
 });
 
 // Başlangıçta kamerayı başlat
-startCamera();
+startCameraButton.addEventListener("click", startCamera);
+stopCameraButton.addEventListener("click", stopCamera);
