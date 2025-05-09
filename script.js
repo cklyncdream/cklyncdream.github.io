@@ -1,36 +1,32 @@
-function kontrolEt() {
-  const girilen = document.getElementById("sifreInput").value;
+function girisYap() {
+  const parola = document.getElementById("parola").value;
   const sonuc = document.getElementById("sonuc");
-  const girisKutusu = document.getElementById("girisKutusu");
+  const basariEkrani = document.getElementById("basariEkrani");
 
-  if (girilen === "cklync") {
-    sonuc.innerHTML = `<div class="animasyon yesil">✔<div>İşlem Tamam!</div></div>`;
+  if (parola === "severus") {
+    sonuc.innerHTML = "<span class='basarili'>✔ İşlem Başarılı</span>";
     setTimeout(() => {
-      document.body.innerHTML = `
-        <div class="chat-panel">
-          <div class="chat-mesajlar" id="mesajAlani">
-            <div>[Sistem] Bağlantı kuruldu. Sohbete başlayabilirsin...</div>
-          </div>
-          <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Mesajını yaz...">
-            <button onclick="mesajGonder()">Gönder</button>
-          </div>
-        </div>`;
+      document.querySelector(".giris-ekrani").style.display = "none";
+      basariEkrani.style.display = "block";
     }, 1500);
   } else {
-    sonuc.innerHTML = `<div class="animasyon kirmizi">❌<div>İşlem Başarısız!</div></div>`;
+    sonuc.innerHTML = "<span class='hatali'>❌ İşlem Başarısız: Parola Hatalı veya Eksik</span>";
   }
 }
 
-function mesajGonder() {
-  const input = document.getElementById("chatInput");
-  const mesajAlani = document.getElementById("mesajAlani");
-  const mesaj = input.value.trim();
-  if (mesaj !== "") {
-    const yeni = document.createElement("div");
-    yeni.textContent = `[Sen] ${mesaj}`;
-    mesajAlani.appendChild(yeni);
-    mesajAlani.scrollTop = mesajAlani.scrollHeight;
-    input.value = "";
-  }
+function menuAc() {
+  const menuContent = document.getElementById("menuContent");
+  menuContent.style.display = (menuContent.style.display === "block") ? "none" : "block";
+}
+
+function ayarlarAc() {
+  alert("Ayarlar Sayfası: Profil fotoğrafı, kullanıcı adı değiştirilebilir.");
+}
+
+function rollerAc() {
+  alert("Roller Sayfası: Kullanıcılar için roller ve emoji atamalarını burada yapabilirsiniz.");
+}
+
+function kanallarAc() {
+  alert("Kanallar Sayfası: Kanal oluşturma veya kanala girme işlemleri burada yapılabilir.");
 }
