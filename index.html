@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamera Uygulaması</title>
-    <link rel="stylesheet" href="stil.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş Sistemi</title>
+  <link rel="stylesheet" href="stil.css">
 </head>
 <body>
-    <div class="container">
-        <div class="camera-box">
-            <video id="video" width="320" height="240" autoplay muted></video>
-            <div class="controls">
-                <button id="startCamera" class="btn">🎥 Kamera Aç</button>
-                <button id="stopCamera" class="btn">❌ Kamera Kapat</button>
-                <button id="captureButton" class="btn">📸 Fotoğraf Çek</button>
-                <button id="startVideo" class="btn">🎬 Video Başlat</button>
-                <button id="stopVideo" class="btn">⏹️ Video Durdur</button>
-            </div>
-        </div>
-
-        <div class="gallery">
-            <h3>Galeriden Fotoğraf ve Video</h3>
-            <div class="tabs">
-                <button class="tab-button active" id="photosTab">Fotoğraflar</button>
-                <button class="tab-button" id="videosTab">Videolar</button>
-            </div>
-            <div id="imageGallery" class="tab-content active"></div>
-            <div id="videoGallery" class="tab-content"></div>
-        </div>
+  <div class="giris-ekrani">
+    <div class="sifre-gui">
+      <h2>Şifre Girişi</h2>
+      <input type="password" id="sifreInput" placeholder="Şifreyi gir...">
+      <button onclick="kontrolEt()">Giriş Yap</button>
+      <div class="sonuc" id="sonuc">
+        <!-- animasyon buraya eklenecek -->
+      </div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
