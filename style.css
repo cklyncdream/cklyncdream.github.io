@@ -1,61 +1,106 @@
-body, html {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #000;
-  height: 100%;
   font-family: 'Segoe UI', sans-serif;
 }
 
-.giris-ekrani {
+body, html {
+  height: 100%;
+  background: linear-gradient(145deg, #000000, #1a1a1a);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  color: #fff;
+  overflow: hidden;
 }
 
-.sifre-gui {
-  background-color: #111;
+.giris-kapsayici {
+  background: #111;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 0 20px #00ffcc;
+  box-shadow: 0 0 30px #00ffc8;
   text-align: center;
-  color: white;
+  position: relative;
+  width: 350px;
+  animation: fadeIn 1s ease-out;
 }
 
-.sifre-gui input {
-  padding: 10px;
+.giris-kapsayici h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #00ffc8;
+}
+
+.giris-kapsayici input {
+  width: 100%;
+  padding: 12px;
   margin-top: 10px;
-  width: 80%;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: #222;
+  color: #fff;
+  font-size: 16px;
   outline: none;
 }
 
-.sifre-gui button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #00ffcc;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+.giris-kapsayici button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #00ffc8;
   color: #000;
+  border: none;
+  border-radius: 10px;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.giris-kapsayici button:hover {
+  background: #00e6b8;
 }
 
 .sonuc {
-  margin-top: 20px;
-  height: 60px;
+  margin-top: 25px;
+  min-height: 50px;
 }
 
-.anim-tik {
+.animasyon {
   font-size: 40px;
-  animation: onayGel 0.5s ease forwards;
+  animation: zoom 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes onayGel {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1); }
+.yesil { color: #00ff00; }
+.kirmizi { color: #ff4444; }
+
+@keyframes zoom {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-.yesil { color: #0f0; }
-.kirmizi { color: #f00; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fadeOut {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+.ana-sistem {
+  font-size: 24px;
+  text-align: center;
+  color: #00ffc8;
+  animation: fadeIn 1s ease-out;
+}
