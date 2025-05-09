@@ -1,14 +1,21 @@
 function kontrolEt() {
   const girilen = document.getElementById("sifreInput").value;
   const sonuc = document.getElementById("sonuc");
+  const girisKutusu = document.getElementById("girisKutusu");
 
   if (girilen === "cklync") {
-    sonuc.innerHTML = `<div class="anim-tik yesil">✔ İşlem tamam!</div>`;
-    // 2 saniye sonra ana sisteme geçiş yapılabilir
+    sonuc.innerHTML = `<div class="animasyon yesil">✔<div>İşlem Tamam!</div></div>`;
     setTimeout(() => {
-      document.body.innerHTML = "<h1 style='color:white;text-align:center;'>Sohbet sistemine hoş geldin!</h1>";
-    }, 2000);
+      girisKutusu.classList.add("fadeOut");
+      setTimeout(() => {
+        document.body.innerHTML = `
+          <div class="ana-sistem">
+            <h1>🌟 CKLYNC DREAM PANEL'E HOŞ GELDİN 🌟</h1>
+            <p>Komutları / ile yaz, örn: /profil, /oyun, /ckcoin</p>
+          </div>`;
+      }, 1000);
+    }, 1500);
   } else {
-    sonuc.innerHTML = `<div class="anim-tik kirmizi">❌ İşlem başarısız!</div>`;
+    sonuc.innerHTML = `<div class="animasyon kirmizi">❌<div>İşlem Başarısız!</div></div>`;
   }
 }
