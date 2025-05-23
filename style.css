@@ -1,123 +1,42 @@
-/* Temel Stiller */
-* {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e6ecf0;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Courier New', monospace;
 }
 
-body, html {
-  height: 100%;
-  background-color: #333;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.giris-ekrani {
-  background-color: #444;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+header {
+  background-color: #1da1f2;
+  color: white;
+  padding: 1rem;
   text-align: center;
-  animation: fadeIn 1s ease;
 }
 
-.giris-ekrani h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+#updates-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-.giris-ekrani input {
-  padding: 10px;
-  width: 80%;
-  margin-bottom: 20px;
+.update {
+  background: white;
   border-radius: 10px;
-  border: 1px solid #00aaff;
-  background-color: #222;
-  color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.giris-ekrani button {
-  padding: 10px 20px;
-  background-color: #00aaff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
+.update h3 {
+  margin: 0;
+  color: #1da1f2;
 }
 
-.giris-ekrani button:hover {
-  background-color: #0088cc;
+.update small {
+  color: gray;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.sonuc-mesaj {
-  margin-top: 20px;
-  font-size: 18px;
-}
-
-.basari-ekrani {
-  display: none;
-  background-color: #fff;
-  color: #333;
-  padding: 40px;
-  text-align: center;
-  border-radius: 15px;
-}
-
-.basarili {
-  color: green;
-  font-size: 28px;
-}
-
-.hatali {
-  color: red;
-  font-size: 28px;
-}
-
-/* Yan Menü */
-.yan-menu {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.menu-item {
-  font-size: 30px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.menu-item:hover {
-  transform: rotate(90deg);
-}
-
-.menu-content {
-  display: none;
-  background-color: #444;
-  padding: 10px;
-  border-radius: 10px;
-  position: absolute;
-  top: 40px;
-  left: 0;
-}
-
-.menu-content div {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.menu-content div:hover {
-  background-color: #333;
-}
-
-/* Animasyonlar */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.update p {
+  margin: 0.5rem 0 0;
 }
