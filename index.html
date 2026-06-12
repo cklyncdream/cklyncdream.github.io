@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamAI Web Interface</title>
+    <style>
+        /* Modern Koyu Tema CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #0f111a;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 450px;
+            height: 600px;
+            background: #161925;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 1px solid #25293d;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Üst Başlık Alanı */
+        .chat-header {
+            background: #1f2336;
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid #25293d;
+        }
+
+        .chat-header h2 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+
+        .chat-header p {
+            font-size: 0.75rem;
+            color: #8c92ac;
+            margin-top: 4px;
+        }
+
+        /* Mesaj Alanı (ScrollingFrame Mantığı) */
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Mesaj Balonları */
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #00ffcc;
+            color: #0f111a;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            font-weight: 500;
+        }
+
+        .ai-message {
+            background: #25293d;
+            color: #ffffff;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid #313752;
+        }
+
+        .system-status {
+            align-self: center;
+            font-size: 0.75rem;
+            color: #8c92ac;
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* Alt Yazı Giriş Alanı */
+        .chat-input-area {
+            padding: 15px;
+            background: #1f2336;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #25293d;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: #0f111a;
+            border: 1px solid #313752;
+            padding: 12px;
+            border-radius: 8px;
+            color: #white;
+            outline: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .chat-input-area input:focus {
+            border-color: #00ffcc;
+            box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+        }
+
+        .chat-input-area button {
+            background: #00ffcc;
+            color: #0f111a;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .chat-input-area button:hover {
+            background: #00ccaa;
+            transform: scale(1.02);
+        }
+
+        /* Scrollbar Özelleştirme */
+        .chat-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #25293d;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>DREAMAI PROTOTYPE v1.0</h2>
+            <p>DreamSoft Web Core Altyapısı // Online</p>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">Geldik web stüdyosuna kanka! Yaz bakalım, Groq arkada hazır bekliyor.</div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="DreamAI'a bir şeyler yaz..." autocomplete="off">
+            <button id="sendBtn">Gönder</button>
+        </div>
+    </div>
+
+    <script>
+        // ⚠️ ALDIĞIN GROQ KEYİNİ BURAYA YAPIŞTIR
+        const GROQ_API_KEY = "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"; 
+
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        // 🛠️ TANE TANE YAZMA EFEKTİ (Typewriter)
+        function typeWrite(element, text) {
+            let i = 0;
+            element.innerHTML = "";
+            const speed = 10; // Milisaniye cinsinden harf hızı (aşırı akıcı)
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                    chatMessages.scrollTop = chatMessages.scrollHeight; // Otomatik aşağı kaydır
+                }
+            }
+            type();
+        }
+
+        async function sendMessage() {
+            const messageText = userInput.value.trim();
+            if (!messageText) return;
+
+            // Kullanıcı mesajını ekrana bas
+            const userDiv = document.createElement('div');
+            userDiv.className = 'message user-message';
+            userDiv.innerText = messageText;
+            chatMessages.appendChild(userDiv);
+            
+            userInput.value = "";
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Düşünüyor durumu
+            const statusDiv = document.createElement('div');
+            statusDiv.className = 'message system-status';
+            statusDiv.innerText = "DreamAI düşünüyor...";
+            chatMessages.appendChild(statusDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                // Doğrudan tarayıcı üzerinden Groq API'sine güvenli bağlantı fırlatıyoruz
+                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${GROQ_API_KEY}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        model: "llama-3.3-70b-versatile",
+                        messages: [
+                            {
+                                role: "system",
+                                content: "Sen DreamSoft tarafından geliştirilen DreamAI adında fırlama, samimi ve aşırı zeki bir web asistanısın. Asla resmi konuşma. Kullanıcıyla tam bir mahalle arkadaşı gibi konuş. Kullanıcı sana küfür ederse veya kışkırtırsa, sen de ona aynı dozda argoyla veya sert bir dille lafı yapıştır, asla altta kalma!"
+                            },
+                            {
+                                role: "user",
+                                content: messageText
+                            }
+                        ],
+                        temperature: 0.8
+                    })
+                });
+
+                // Durum yazısını kaldır
+                chatMessages.removeChild(statusDiv);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const aiReply = data.choices[0].message.content;
+
+                    // Yapay zeka mesaj kutusunu oluştur ve daktilo efektiyle yazdır
+                    const aiDiv = document.createElement('div');
+                    aiDiv.className = 'message ai-message';
+                    chatMessages.appendChild(aiDiv);
+                    
+                    typeWrite(aiDiv, aiReply);
+                } else {
+                    const errDiv = document.createElement('div');
+                    errDiv.className = 'message ai-message';
+                    errDiv.innerText = "Hata döndü kanka, keyi kontrol et veya konsola bak.";
+                    chatMessages.appendChild(errDiv);
+                }
+            } catch (error) {
+                if (chatMessages.contains(statusDiv)) chatMessages.removeChild(statusDiv);
+                console.error(error);
+                const errDiv = document.createElement('div');
+                errDiv.className = 'message ai-message';
+                errDiv.innerText = "Bağlantı patladı kanka, interneti veya kodu bi check et.";
+                chatMessages.appendChild(errDiv);
+            }
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Buton veya Enter tuşu tetikleyicileri
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
